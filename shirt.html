@@ -88,9 +88,28 @@
                         <li>Status: In Stock</li>
                     </ul>
                     
-                    <a href="https://yourpaymentlinkhere.com" target="_blank" class="btn btn-primary" id="buy-button">
-                        Buy Now
-                    </a>
+                      <button onclick="payWithPaystack()">Buy Now</button>
+                     <script src="https://js.paystack.co/v1/inline.js"></script>
+
+<script>
+function payWithPaystack() {
+  var handler = PaystackPop.setup({
+    key:  'pk_live_6976f1c00e238934081155d389b38ade3617cd75', // Replace with your Paystack public key
+    email: 'customer@example.com', // Optionally collect email dynamically
+    amount: 217371.96 * 100, // Replace 5000 with your product price in Naira
+    currency: "NGN",
+    ref: '' + Math.floor((Math.random() * 1000000000) + 1), // Random reference
+    callback: function(response){
+      alert('Payment successful. Transaction ref is ' + response.reference);
+      window.location.href = "success.html"; // Redirect after payment
+    },
+    onClose: function(){
+      alert('Payment window closed.');
+    }
+  });
+  handler.openIframe();
+}
+</script>
                 </div>
             </div>
         </div>
@@ -228,5 +247,6 @@
   <script src="js/custom.js"></script>
 
 </body>
+
 
 </html>
