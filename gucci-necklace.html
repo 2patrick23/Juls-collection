@@ -89,11 +89,12 @@
                     </ul>
                     
                      <button onclick="payWithPaystack()">Buy Now</button>
+                     <script src="https://js.paystack.co/v1/inline.js"></script>
 
 <script>
 function payWithPaystack() {
   var handler = PaystackPop.setup({
-    key:  pk_live_6976f1c00e238934081155d389b38ade3617cd75 // Replace with your Paystack public key
+    key:  pk_live_6976f1c00e238934081155d389b38ade3617cd75, // Replace with your Paystack public key
     email: 'customer@example.com', // Optionally collect email dynamically
     amount: 300000 * 100, // Replace 5000 with your product price in Naira
     currency: "NGN",
@@ -250,4 +251,5 @@ function payWithPaystack() {
 
 
 </html>
+
 
