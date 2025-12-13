@@ -96,7 +96,7 @@ function payWithPaystack() {
   var handler = PaystackPop.setup({
     key:  'pk_live_6976f1c00e238934081155d389b38ade3617cd75', // Replace with your Paystack public key
     email: 'customer@example.com', // Optionally collect email dynamically
-    amount: 300000 * 100, // Replace 5000 with your product price in Naira
+    amount: 50 * 100, // Replace 5000 with your product price in Naira
     currency: "NGN",
     ref: '' + Math.floor((Math.random() * 1000000000) + 1), // Random reference
     callback: function(response){
@@ -251,6 +251,7 @@ function payWithPaystack() {
 
 
 </html>
+
 
 
 
