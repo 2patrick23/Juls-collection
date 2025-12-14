@@ -1,53 +1,137 @@
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank You - Juls Collection</title>
+  <title>Payment Successful</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f8f8f8;
+      background: #f4f4f4;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+      min-height: 100vh;
+    }
+    .box {
+      background: white;
+      padding: 25px;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 12px;
+    }
+    h2 {
+      color: green;
       text-align: center;
-      color: #333;
     }
-    .container {
-      background-color: #fff;
-      padding: 40px 60px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
     }
-    h1 {
-      color: #e63946;
+    button {
+      background: #25D366;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
     }
-    p {
-      margin: 20px 0;
-      font-size: 18px;
-    }
-    a {
-      text-decoration: none;
-      color: #fff;
-      background-color: #e63946;
-      padding: 12px 25px;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
-    a:hover {
-      background-color: #d62828;
-    }
+    .success-animation {
+  text-align: center;
+  margin-bottom: 20px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.checkmark-circle {
+  width: 80px;
+  height: 80px;
+  background: #28a745;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  position: relative;
+}
+
+.checkmark {
+  width: 22px;
+  height: 40px;
+  border: solid white;
+  border-width: 0 6px 6px 0;
+  position: absolute;
+  top: 18px;
+  left: 28px;
+  transform: rotate(45deg);
+  animation: drawCheck 0.6s ease forwards;
+}
+
+@keyframes drawCheck {
+  from {
+    height: 0;
+    width: 0;
+  }
+  to {
+    height: 40px;
+    width: 22px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Thank You!</h1>
-    <p>Thank you for shopping at <strong>Juls Collection</strong>.<br>Your order has been received successfully.</p>
-    <a href="index.html">Continue Shopping</a>
+
+<div class="box">
+  <h2>✅ Payment Successful</h2>
+  <div class="success-animation">
+  <div class="checkmark-circle">
+    <div class="checkmark"></div>
   </div>
+  <h2>Payment Successful</h2>
+</div>
+
+  <p>Please fill in your details to complete your order</p>
+
+  <form id="waForm">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="tel" id="phone" placeholder="Your Phone Number" required>
+    <input type="text" id="address" placeholder="Delivery Address" required>
+    <textarea id="note" placeholder="Order details / size / color" required></textarea>
+    <button type="submit">Send to WhatsApp</button>
+  </form>
+</div>
+
+ <script>
+  const form = document.getElementById("waForm");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const address = document.getElementById("address").value;
+    const note = document.getElementById("note").value;
+
+    // 🔴 REPLACE with YOUR WhatsApp number (no +, no spaces)
+    const yourWhatsAppNumber = "2347086771985";
+
+    const message =
+      `*New Paid Order*%0A%0A` +
+      `Name: ${name}%0A` +
+      `Customer Phone: ${phone}%0A` +
+      `Address: ${address}%0A` +
+      `Order Details: ${note}%0A%0A` +
+      `🙏 Thanks for shopping with us on *Juls Collection*`;
+
+    const whatsappURL = `https://wa.me/${yourWhatsAppNumber}?text=${message}`;
+
+    window.open(whatsappURL, "_blank");
+  });
+</script>
+
+
 </body>
 </html>
