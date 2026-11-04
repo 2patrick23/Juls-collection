@@ -1120,4 +1120,17 @@ body {
         padding: 20px;
     }
 }
-/*# sourceMappingURL=style.css.map */
+/* Rounded buttons */
+.blog_section .detail-box a,
+.hero-btn,
+.product-btn {
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+/* Rounded buttons on hover */
+.blog_section .detail-box a:hover,
+.hero-btn:hover,
+.product-btn:hover {
+    transform: translateY(-3px);
+}/*# sourceMappingURL=style.css.map */
